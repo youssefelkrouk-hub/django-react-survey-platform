@@ -1,0 +1,24 @@
+[
+  {"model": "collecte.secteuractivite", "pk": 1, "fields": {"nom": "Agriculture et pêche"}},
+  {"model": "collecte.secteuractivite", "pk": 2, "fields": {"nom": "Industrie et manufacture"}},
+  {"model": "collecte.secteuractivite", "pk": 3, "fields": {"nom": "BTP et construction"}},
+  {"model": "collecte.secteuractivite", "pk": 4, "fields": {"nom": "Commerce et distribution"}},
+  {"model": "collecte.secteuractivite", "pk": 5, "fields": {"nom": "Tourisme et hôtellerie"}},
+  {"model": "collecte.secteuractivite", "pk": 6, "fields": {"nom": "Transport et logistique"}},
+  {"model": "collecte.secteuractivite", "pk": 7, "fields": {"nom": "Technologies de l'information"}},
+  {"model": "collecte.secteuractivite", "pk": 8, "fields": {"nom": "Finance et assurance"}},
+  {"model": "collecte.secteuractivite", "pk": 9, "fields": {"nom": "Santé et action sociale"}},
+  {"model": "collecte.secteuractivite", "pk": 10, "fields": {"nom": "Éducation et formation"}},
+  {"model": "collecte.secteuractivite", "pk": 11, "fields": {"nom": "Artisanat"}},
+  {"model": "collecte.secteuractivite", "pk": 12, "fields": {"nom": "Services aux entreprises"}},
+  {"model": "collecte.secteuractivite", "pk": 13, "fields": {"nom": "Autre"}},
+
+  {"model": "collecte.typeactivite", "pk": 1, "fields": {"nom": "Très petite entreprise (TPE)"}},
+  {"model": "collecte.typeactivite", "pk": 2, "fields": {"nom": "Petite et moyenne entreprise (PME)"}},
+  {"model": "collecte.typeactivite", "pk": 3, "fields": {"nom": "Grande entreprise"}},
+  {"model": "collecte.typeactivite", "pk": 4, "fields": {"nom": "Auto-entrepreneur"}},
+  {"model": "collecte.typeactivite", "pk": 5, "fields": {"nom": "Coopérative"}},
+  {"model": "collecte.typeactivite", "pk": 6, "fields": {"nom": "Association"}},
+  {"model": "collecte.typeactivite", "pk": 7, "fields": {"nom": "Établissement public"}},
+  {"model": "collecte.typeactivite", "pk": 8, "fields": {"nom": "Filiale de groupe international"}}
+]

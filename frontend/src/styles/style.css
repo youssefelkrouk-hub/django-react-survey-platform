@@ -1,0 +1,319 @@
+/*
+ * IDENTITÉ VISUELLE — DATA INGÉNIERIE (React Frontend)
+ * Palette identique à static/css/style.css & dataingenierie.com
+ */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --di-primaire:       #36638b;
+    --di-secondaire:     #3f7186;
+    --di-texte:          #5d5c5c;
+    --di-titre:          #282828;
+    --di-fond:           #f9f9f9;
+    --di-fond-carte:     #ffffff;
+    --di-bordure:        #e8e8e8;
+
+    --di-primaire-fonce: #2a4f6f;
+    --di-primaire-clair: #edf2f7;
+
+    --di-icone-1: #36638b;
+    --di-icone-2: #3f7186;
+    --di-icone-3: #2e7d57;
+    --di-icone-4: #b07d2c;
+
+    --di-radius:         16px;
+    --di-radius-sm:      8px;
+    --di-shadow:         0 4px 20px rgba(54, 99, 139, 0.10);
+    --di-shadow-hover:   0 8px 30px rgba(54, 99, 139, 0.18);
+    --di-transition:     all 0.3s ease-in-out;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    color: var(--di-texte);
+    background-color: var(--di-fond);
+    font-size: 16px;
+    line-height: 1.5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: var(--di-titre);
+    margin-bottom: 0;
+}
+
+.app-navbar {
+    background: linear-gradient(90deg, var(--di-primaire) 0%, var(--di-secondaire) 100%);
+    box-shadow: 0 2px 12px rgba(54, 99, 139, 0.25);
+    padding: 0.5rem 0;
+}
+
+.app-navbar .navbar-brand {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #ffffff !important;
+}
+
+.app-navbar .nav-link {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.90) !important;
+    transition: var(--di-transition);
+    border-radius: var(--di-radius-sm);
+    padding: 0.4rem 0.75rem !important;
+}
+
+.app-navbar .nav-link:hover,
+.app-navbar .nav-link.active {
+    color: #ffffff !important;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.app-navbar .dropdown-menu {
+    border: none;
+    border-radius: var(--di-radius-sm);
+    box-shadow: var(--di-shadow-hover);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+}
+
+.app-navbar .dropdown-item {
+    color: var(--di-texte);
+    font-weight: 500;
+    transition: var(--di-transition);
+}
+
+.app-navbar .dropdown-item:hover {
+    background-color: var(--di-primaire-clair);
+    color: var(--di-primaire);
+}
+
+.app-footer {
+    background-color: var(--di-primaire);
+    color: rgba(255, 255, 255, 0.80);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 400;
+    margin-top: auto;
+    padding: 1rem 0;
+    border-top: 3px solid var(--di-secondaire);
+}
+
+.page-connexion {
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carte-connexion {
+    background: var(--di-fond-carte);
+    border-radius: var(--di-radius);
+    box-shadow: var(--di-shadow-hover);
+    max-width: 420px;
+    width: 100%;
+    padding: 2.4rem 2rem;
+    border: 1px solid var(--di-bordure);
+}
+
+.carte-stat {
+    border: 1px solid var(--di-bordure) !important;
+    border-radius: var(--di-radius) !important;
+    box-shadow: var(--di-shadow);
+    background: var(--di-fond-carte) !important;
+    transition: var(--di-transition);
+    height: 100%;
+}
+
+.carte-stat:hover {
+    box-shadow: var(--di-shadow-hover);
+    transform: translateY(-2px);
+}
+
+.icone-stat {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.valeur-stat {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--di-primaire);
+    line-height: 1.1;
+}
+
+.bg-icone-1 { background: linear-gradient(135deg, var(--di-primaire), #4a80b0); }
+.bg-icone-2 { background: linear-gradient(135deg, var(--di-secondaire), #5a9aad); }
+.bg-icone-3 { background: linear-gradient(135deg, #2e7d57, #4cae7f); }
+.bg-icone-4 { background: linear-gradient(135deg, #b07d2c, #d4a44e); }
+
+.carte-app {
+    background: var(--di-fond-carte) !important;
+    border: 1px solid var(--di-bordure) !important;
+    border-radius: var(--di-radius) !important;
+    box-shadow: var(--di-shadow);
+}
+
+.entete-carte {
+    background: var(--di-primaire) !important;
+    color: #ffffff;
+    border-radius: var(--di-radius) var(--di-radius) 0 0 !important;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+}
+
+.btn-primary {
+    background-color: var(--di-primaire);
+    border-color: var(--di-primaire);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    border-radius: var(--di-radius-sm);
+    transition: var(--di-transition);
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    background-color: var(--di-secondaire);
+    border-color: var(--di-secondaire);
+    box-shadow: 0 4px 12px rgba(63, 113, 134, 0.3);
+}
+
+.btn-outline-primary {
+    color: var(--di-primaire);
+    border-color: var(--di-primaire);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    border-radius: var(--di-radius-sm);
+    transition: var(--di-transition);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--di-primaire);
+    border-color: var(--di-primaire);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--di-primaire);
+    box-shadow: 0 0 0 0.2rem rgba(54, 99, 139, 0.20);
+}
+
+.form-control,
+.form-select {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    border-radius: var(--di-radius-sm);
+    border-color: var(--di-bordure);
+}
+
+.champ-obligatoire::after {
+    content: " *";
+    color: #c0392b;
+    font-weight: 700;
+}
+
+.section-titre {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--di-primaire);
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 2px solid var(--di-secondaire);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.section-titre:first-child {
+    margin-top: 0;
+}
+
+.table-app thead {
+    background-color: var(--di-primaire);
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+}
+
+.table-app tbody tr {
+    transition: var(--di-transition);
+}
+
+.table-app tbody tr:hover {
+    background-color: var(--di-primaire-clair);
+}
+
+.table-app td {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    color: var(--di-texte);
+    vertical-align: middle;
+}
+
+.badge.bg-success {
+    background-color: #2e7d57 !important;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+.badge.bg-secondary {
+    background-color: #818181 !important;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+.alert {
+    border-radius: var(--di-radius-sm);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 576px) {
+    .btn-primary, .btn-outline-primary {
+        min-height: 48px;
+        font-size: 0.95rem;
+    }
+    .form-control, .form-select {
+        min-height: 46px;
+        font-size: 1rem;
+    }
+    .valeur-stat {
+        font-size: 1.6rem;
+    }
+    .icone-stat {
+        width: 46px;
+        height: 46px;
+        font-size: 1.2rem;
+    }
+    .container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "model": "comptes.utilisateur",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$1500000$6LGGuWc2HWBUBKLIsnZYLN$DNcHA0TJxcOjtK8ArsDzVPODaULgvaaQXICSEuFc444=",
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "Sara",
+      "last_name": "Alaoui",
+      "email": "admin@enquete.fr",
+      "is_staff": true,
+      "is_active": true,
+      "role": "admin",
+      "telephone": "0600000001"
+    }
+  },
+  {
+    "model": "comptes.utilisateur",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$1500000$TjDAhSOMjLQaHs2Xars8LS$jYz10aOEVzmylFmemDn1iLVDBrvpMx4TK8BXyG7F7XQ=",
+      "is_superuser": false,
+      "username": "enqueteur1",
+      "first_name": "Karim",
+      "last_name": "Bennani",
+      "email": "enqueteur@enquete.fr",
+      "is_staff": false,
+      "is_active": true,
+      "role": "enqueteur",
+      "telephone": "0600000002"
+    }
+  }
+]

@@ -1,0 +1,68 @@
+services:
+
+  # ---------------------------------------------------------
+  # Base de données PostgreSQL
+  # ---------------------------------------------------------
+  db:
+    image: postgres:16
+    container_name: collecte_db
+    environment:
+      POSTGRES_DB: collecte_terrain
+      POSTGRES_USER: collecte_user
+      POSTGRES_PASSWORD: collecte_pass
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U collecte_user -d collecte_terrain"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  # ---------------------------------------------------------
+  # API Backend Django (REST Framework)
+  # ---------------------------------------------------------
+  web:
+    build: .
+    container_name: collecte_web
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"                # API accessible sur http://localhost:8000/api/v1/
+    environment:
+      DJANGO_DEBUG: "True"
+      DJANGO_SECRET_KEY: "cle-de-developpement-a-changer-en-production"
+      DJANGO_ALLOWED_HOSTS: "localhost,127.0.0.1,*"
+      POSTGRES_DB: collecte_terrain
+      POSTGRES_USER: collecte_user
+      POSTGRES_PASSWORD: collecte_pass
+      POSTGRES_HOST: db
+      POSTGRES_PORT: "5432"
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # ---------------------------------------------------------
+  # Frontend React (Vite)
+  # ---------------------------------------------------------
+  frontend:
+    build: ./frontend
+    container_name: collecte_frontend
+    command: npm run dev -- --host 0.0.0.0
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "5173:5173"                # Application React accessible sur http://localhost:5173
+    environment:
+      VITE_API_URL: "http://localhost:8000/api/v1/"
+    depends_on:
+      - web
+    restart: unless-stopped
+
+volumes:
+  db_data:

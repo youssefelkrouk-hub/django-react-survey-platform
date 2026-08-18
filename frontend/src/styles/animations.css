@@ -1,0 +1,268 @@
+/*
+ * ANIMATIONS & MICRO-INTERACTIONS — DATA INGÉNIERIE (React Frontend)
+ * CSS pur — transform / opacity uniquement, aucune dépendance externe.
+ * Respecte prefers-reduced-motion pour l'accessibilité.
+ */
+
+/* ---------------------------------------------------------------- */
+/* Keyframes                                                         */
+/* ---------------------------------------------------------------- */
+
+@keyframes di-fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes di-fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes di-slide-down-fade {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes di-scale-in {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes di-shimmer {
+    0%   { background-position: -200px 0; }
+    100% { background-position: calc(200px + 100%) 0; }
+}
+
+@keyframes di-pulse-soft {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.55; }
+}
+
+@keyframes di-count-pop {
+    0%   { opacity: 0; transform: translateY(6px) scale(0.94); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ---------------------------------------------------------------- */
+/* 1. Transitions entre pages                                        */
+/* ---------------------------------------------------------------- */
+
+.page-transition {
+    animation: di-fade-in-up 0.32s ease-out both;
+}
+
+/* ---------------------------------------------------------------- */
+/* 2. Cartes statistiques du dashboard (apparition en cascade)       */
+/* ---------------------------------------------------------------- */
+
+.di-stagger-card {
+    opacity: 0;
+    animation: di-fade-in-up 0.45s ease-out forwards;
+    animation-delay: calc(var(--di-stagger-index, 0) * 90ms);
+}
+
+.valeur-stat-animee {
+    display: inline-block;
+    animation: di-count-pop 0.4s ease-out both;
+    animation-delay: calc(var(--di-stagger-index, 0) * 90ms + 120ms);
+}
+
+/* ---------------------------------------------------------------- */
+/* 3. Formulaire de collecte                                         */
+/* ---------------------------------------------------------------- */
+
+.form-control,
+.form-select {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(54, 99, 139, 0.18), 0 0 0 0.2rem rgba(54, 99, 139, 0.16);
+}
+
+textarea.form-control:focus {
+    transform: none; /* évite un décalage disgracieux sur les zones de texte */
+}
+
+.input-group:focus-within .input-group-text {
+    border-color: var(--di-primaire);
+    color: var(--di-primaire);
+    transition: var(--di-transition);
+}
+
+/* Bouton de soumission — état de chargement */
+.btn-di-loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.85;
+}
+
+.btn-di-loading .spinner-border {
+    animation: spinner-border 0.6s linear infinite, di-pulse-soft 1.4s ease-in-out infinite;
+}
+
+/* ---------------------------------------------------------------- */
+/* 4. Tableaux et listes (apparition en cascade modérée)             */
+/* ---------------------------------------------------------------- */
+
+.di-row-animate {
+    opacity: 0;
+    animation: di-fade-in-up 0.35s ease-out forwards;
+    animation-delay: calc(var(--di-stagger-index, 0) * 45ms);
+}
+
+/* ---------------------------------------------------------------- */
+/* 5. Messages de succès / erreur                                    */
+/* ---------------------------------------------------------------- */
+
+.alert-di-animated {
+    animation: di-slide-down-fade 0.3s ease-out both;
+}
+
+/* ---------------------------------------------------------------- */
+/* 6. Boutons et éléments interactifs (micro-interactions)           */
+/* ---------------------------------------------------------------- */
+
+.btn {
+    transition: transform 0.12s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+}
+
+.btn:active:not(:disabled) {
+    transform: scale(0.96);
+}
+
+.btn:focus-visible {
+    outline: 2px solid var(--di-primaire);
+    outline-offset: 2px;
+}
+
+.btn:disabled {
+    transform: none;
+}
+
+.carte-app {
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.carte-app:hover {
+    box-shadow: var(--di-shadow-hover);
+}
+
+.dropdown-item,
+.app-navbar .nav-link {
+    will-change: background-color;
+}
+
+.app-navbar .dropdown-menu.show {
+    animation: di-scale-in 0.18s ease-out both;
+    transform-origin: top right;
+}
+
+.navbar-collapse.collapsing,
+.navbar-collapse.show {
+    transition: height 0.25s ease;
+}
+
+/* ---------------------------------------------------------------- */
+/* 7. États de chargement — skeleton loaders                         */
+/* ---------------------------------------------------------------- */
+
+.di-skeleton {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--di-primaire-clair);
+    border-radius: var(--di-radius-sm);
+    background-image: linear-gradient(
+        90deg,
+        var(--di-primaire-clair) 0px,
+        rgba(255, 255, 255, 0.75) 40px,
+        var(--di-primaire-clair) 80px
+    );
+    background-size: 200px 100%;
+    background-repeat: no-repeat;
+    animation: di-shimmer 1.3s ease-in-out infinite;
+}
+
+.di-skeleton-text {
+    height: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.di-skeleton-title {
+    height: 1.6rem;
+    width: 60%;
+    margin-bottom: 0.75rem;
+}
+
+.di-skeleton-circle {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.di-fade-content {
+    animation: di-fade-in 0.35s ease-out both;
+}
+
+/* ---------------------------------------------------------------- */
+/* Modale (Gestion des enquêteurs)                                   */
+/* ---------------------------------------------------------------- */
+
+.modal-di-backdrop {
+    animation: di-fade-in 0.2s ease-out both;
+}
+
+.modal-di-content {
+    animation: di-scale-in 0.25s ease-out both;
+}
+
+/* ---------------------------------------------------------------- */
+/* Accessibilité — prefers-reduced-motion                            */
+/* ---------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .page-transition,
+    .di-stagger-card,
+    .di-row-animate,
+    .valeur-stat-animee {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+    }
+
+    .form-control:focus,
+    .form-select:focus,
+    .btn:active:not(:disabled) {
+        transform: none !important;
+    }
+}
